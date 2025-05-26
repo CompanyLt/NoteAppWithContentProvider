@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Suteikiamas leidimas kitoms programoms skaityti šį ContentProvider -->
+    <permission
+        android:name="com.example.praktineuzduotis.PERMISSION_READ_NOTES"
+        android:protectionLevel="normal" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PraktineUzduotis"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.PraktineUzduotis">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name=".Data.NotesContentProvider"
+            android:authorities="com.example.praktineuzduotis.provider"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:readPermission="com.example.praktineuzduotis.PERMISSION_READ_NOTES" />
+    </application>
+
+</manifest>
